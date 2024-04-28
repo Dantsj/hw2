@@ -26,14 +26,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_234444) do
     t.string "title"
     t.integer "year_released"
     t.string "rated"
-    t.integer "studio_id"
+    t.string "studio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
+    t.string "movie"
+    t.string "actor"
     t.string "character_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -91,21 +91,21 @@ new_movie1 = Movie.new
 new_movie1["title"] = "Batman Begins"
 new_movie1["year_released"] = "2005"
 new_movie1["rated"] = "PG-13"
-new_movie1["studio_id"] = 1
+new_movie1["studio"] = new_studio1.name
 new_movie1.save
 
 new_movie2 = Movie.new
 new_movie2["title"] = "The Dark Knight"
 new_movie2["year_released"] = "2008"
 new_movie2["rated"] = "PG-13"
-new_movie2["studio_id"] = 1
+new_movie2["studio"] = new_studio1.name
 new_movie2.save
 
 new_movie3 = Movie.new
 new_movie3["title"] = "The Dark Knight Rises"
 new_movie3["year_released"] = "2012"
 new_movie3["rated"] = "PG-13"
-new_movie3["studio_id"] = 1
+new_movie3["studio"] = new_studio1.name
 new_movie3.save
 
 new_actor1 = Actor.new
@@ -153,10 +153,94 @@ new_actor11["name"] = "Anne Hathaway"
 new_actor11.save
 
 new_role11 = Role.new
-new_role11["movie_id"] = 1
-new_role11["actor_id"] = 1
+new_role11["movie"] = new_movie1.title
+new_role11["actor"] = new_actor1.name
 new_role11["character_name"] = "Bruce Wayne"
 new_role11.save
+
+new_role12 = Role.new
+new_role12["movie"] = new_movie1.title
+new_role12["actor"] = new_actor2.name
+new_role12["character_name"] = "Alfred"
+new_role12.save
+
+new_role13 = Role.new
+new_role13["movie"] = new_movie1.title
+new_role13["actor"] = new_actor3.name
+new_role13["character_name"] = "Ra's Al Ghul"
+new_role13.save
+
+new_role14 = Role.new
+new_role14["movie"] = new_movie1.title
+new_role14["actor"] = new_actor4.name
+new_role14["character_name"] = "Rachel Dawes"
+new_role14.save
+
+new_role15 = Role.new
+new_role15["movie"] = new_movie1.title
+new_role15["actor"] = new_actor5.name
+new_role15["character_name"] = "Commissioner Gordon"
+new_role15.save
+
+new_role21 = Role.new
+new_role21["movie"] = new_movie2.title
+new_role21["actor"] = new_actor1.name
+new_role21["character_name"] = "Bruce Wayne"
+new_role21.save
+
+new_role22 = Role.new
+new_role22["movie"] = new_movie2.title
+new_role22["actor"] = new_actor6.name
+new_role22["character_name"] = "Joker"
+new_role22.save
+
+new_role23 = Role.new
+new_role23["movie"] = new_movie2.title
+new_role23["actor"] = new_actor7.name
+new_role23["character_name"] = "Harvey Dent"
+new_role23.save
+
+new_role24 = Role.new
+new_role24["movie"] = new_movie2.title
+new_role24["actor"] = new_actor2.name
+new_role24["character_name"] = "Alfred"
+new_role24.save
+
+new_role25 = Role.new
+new_role25["movie"] = new_movie2.title
+new_role25["actor"] = new_actor8.name
+new_role25["character_name"] = "Rachel Dawes"
+new_role25.save
+
+new_role31 = Role.new
+new_role31["movie"] = new_movie3.title
+new_role31["actor"] = new_actor1.name
+new_role31["character_name"] = "Bruce Wayne"
+new_role31.save
+
+new_role32 = Role.new
+new_role32["movie"] = new_movie3.title
+new_role32["actor"] = new_actor5.name
+new_role32["character_name"] = "Commissioner Gordon"
+new_role32.save
+
+new_role33 = Role.new
+new_role33["movie"] = new_movie3.title
+new_role33["actor"] = new_actor9.name
+new_role33["character_name"] = "Bane"
+new_role33.save
+
+new_role34 = Role.new
+new_role34["movie"] = new_movie3.title
+new_role34["actor"] = new_actor10.name
+new_role34["character_name"] = "John Blake"
+new_role34.save
+
+new_role35 = Role.new
+new_role35["movie"] = new_movie3.title
+new_role35["actor"] = new_actor11.name
+new_role35["character_name"] = "Selina Kyle"
+new_role35.save
 
 # Prints a header for the movies output
 puts "Movies"
@@ -166,12 +250,11 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-#for movie in Movie.all
-#    puts "#{movie.title} #{movie.year_released} #{movie.rated} #{Studio[movie.studio_id]}"
-#end
+for movie in Movie.all
+    puts "#{movie.title} #{movie.year_released} #{movie.rated} #{movie.studio}"
+end
 
-studio_1 = Studio.find(1)
-puts studio_1.name
+#puts Studio.find{1}.name
 
 # Prints a header for the cast output
 puts ""
@@ -181,3 +264,7 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+for role in Role.all
+    puts "#{role.movie} #{role.actor} #{role.character_name}"
+end
